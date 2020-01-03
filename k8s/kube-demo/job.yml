@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: kube-demo-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: kube-demo-migrations
+          image: tmdeal/kube-demo:latest
+          command: ['python', 'manage.py', 'migrate']
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+
+            - name: POSTGRES_NAME
+              value: kube
+      restartPolicy: Never
+  backoffLimit: 5
