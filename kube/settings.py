@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'kube.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME', 'kube'),
+        'NAME': os.environ.get('POSTGRES_DB', 'kube'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
         'HOST': os.environ.get('POSTGRES_SERVICE_HOST', 'postgres'),
