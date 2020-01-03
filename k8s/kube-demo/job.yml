@@ -23,6 +23,6 @@ spec:
                   key: password
 
             - name: POSTGRES_DB
-              value: postgres
+              value: kube
       restartPolicy: Never
   backoffLimit: 5
