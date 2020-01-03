@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kube-demo
+  name: kube-demo-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: kube-demo
-    template:
-      metadata:
-        labels:
-          app: kube-demo
-      spec:
-        containers:
-          - name: kube-demo
-            image: tmdeal/kube-demo
-            ports:
-              - containerPort: 8000
+  template:
+    metadata:
+      labels:
+        app: kube-demo
+    spec:
+      containers:
+        - name: kube-demo
+          image: tmdeal/kube-demo:latest
+          ports:
+            - containerPort: 8000
