@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cirkle</title>
+    </head>
+
+    <style>
+        .black {
+            fill: black;
+            stroke-width: 1px;
+            stroke: black;
+        }
+
+        .red {
+            fill: red;
+            stroke-width: 1px;
+            stroke: red;
+        }
+
+        .green {
+            fill: green;
+            stroke-width: 1px;
+            stroke: green;
+        }
+
+        .blue {
+            fill: blue;
+            stroke-width: 1px;
+            stroke: blue;
+        }
+    </style>
+
+    <body>
+        <div>
+            <h3>Cirkles</h3>
+            <a href="{% url 'create' %}">Create Cirkle</a>
+        </div>
+
+        {% for cirkle in cirkles %}
+            <div>
+                <svg width="{{ cirkle.width }}" height="{{ cirkle.height }}">
+                    <circle cx="{{ cirkle.radius }}" cy="{{ cirkle.radius }}" r="{{ cirkle.radius }}" class="{{ cirkle.color }}"></circle>
+                </svg>
+            </div>
+        {% empty %}
+            <div>
+                <h4>No Cirkles to render</h4>
+            </div>
+        {% endfor %}
+    </body>
+</html>
