@@ -6,7 +6,49 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Kube</title>
     </head>
+
+    <style>
+        .black {
+            fill: black;
+            stroke-width: 1px;
+            stroke: black;
+        }
+
+        .red {
+            fill: red;
+            stroke-width: 1px;
+            stroke: red;
+        }
+
+        .green {
+            fill: green;
+            stroke-width: 1px;
+            stroke: green;
+        }
+
+        .blue {
+            fill: blue;
+            stroke-width: 1px;
+            stroke: blue;
+        }
+    </style>
+
     <body>
-        <p>Hello World!</p>
+        <div>
+            <h3>Kubes</h3>
+            <a href="#">Create Kube</a>
+        </div>
+
+        {% for kube in kubes %}
+            <div>
+                <svg width="{{ kube.width }}" height="{{ kube.height }}">
+                    <rect width="{{ kube.width }}" height="{{ kube.height }}" class="{{ kube.color }}"></rect>
+                </svg>
+            </div>
+        {% empty %}
+            <div>
+                <h4>No Kubes to render</h4>
+            </div>
+        {% endfor %}
     </body>
 </html>
