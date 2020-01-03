@@ -9,12 +9,12 @@ spec:
   - host: shapes.com
     http:
       paths:
-      - path: /kubes/*
+      - path: /kubes/(.*)
         backend:
           serviceName: kube-demo-service
           servicePort: 8000
 
-      - path: /cirkles/*
+      - path: /cirkles/(.*)
         backend:
           serviceName: cirkle-demo-service
           servicePort: 8000
