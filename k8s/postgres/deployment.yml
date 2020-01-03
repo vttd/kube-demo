@@ -1,15 +1,15 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
   name: postgres-deployment
 spec:
   replicas: 1
   selector:
-    matchLabel:
+    matchLabels:
       app: postgres
   template:
     metadata:
-      label:
+      labels:
         app: postgres
         tier: backend
     spec:
@@ -28,8 +28,11 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: password
+
+            - name: POSTGRES_DB
+              value: postgres
           ports:
-            containerPort: 5432
+            - containerPort: 5432
           volumeMounts:
             - name: postgres-volume-mount
               mountPath: /var/lib/postgresql/data

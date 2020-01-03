@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: batch/v1
 kind: Job
 metadata:
   name: kube-demo-migrations
@@ -22,7 +22,7 @@ spec:
                   name: postgres-secret
                   key: password
 
-            - name: POSTGRES_NAME
-              value: kube
+            - name: POSTGRES_DB
+              value: postgres
       restartPolicy: Never
   backoffLimit: 5
