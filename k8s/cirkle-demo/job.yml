@@ -1,22 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: kube-demo-deployment
+  name: cirkle-demo-migrations
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: kube-demo
   template:
-    metadata:
-      labels:
-        app: kube-demo
     spec:
       containers:
-        - name: kube-demo
-          image: tmdeal/kube-demo:latest
-          ports:
-            - containerPort: 8000
+        - name: cirkle-demo-migrations
+          image: tmdeal/cirkle-demo:latest
+          command: ['python', 'manage.py', 'migrate']
           env:
             - name: POSTGRES_USER
               valueFrom:
@@ -31,4 +23,6 @@ spec:
                   key: password
 
             - name: POSTGRES_DB
-              value: kube
+              value: postgres
+      restartPolicy: Never
+  backoffLimit: 5
