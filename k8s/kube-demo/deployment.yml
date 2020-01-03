@@ -17,3 +17,18 @@ spec:
           image: tmdeal/kube-demo:latest
           ports:
             - containerPort: 8000
+          env:
+            - name: POSTGRES_NAME
+              value: kube
+
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  value: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  value: password
