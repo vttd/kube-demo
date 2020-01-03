@@ -1,0 +1,11 @@
+.dockerignore
+Dockerfile
+
+.git
+.gitignore
+
+k8s
+
+venv
+*.pyc
+db.sqlite3
