@@ -6,6 +6,9 @@ RUN mkdir /code
 
 WORKDIR /code
 
+RUN apt-get update
+RUN apt-get install libpq-dev -y
+
 COPY . /code
 
 RUN pip install -r requirements.txt
